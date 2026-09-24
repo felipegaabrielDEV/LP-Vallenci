@@ -8,26 +8,10 @@ A página apresenta a VALLENCI como o próximo passo na carreira do profissional
 
 ## Estrutura da página
 
-A ordem segue o documento de ajustes do cliente (revisão de 23/09):
+A ordem segue o documento de ajustes do cliente:
 
 | # | Bloco | Destaques |
 |---|---|---|
-| 1 | **Menu** | Fundo claro, links no verde da marca, "Clínica VALLENCI" e o botão padrão de WhatsApp |
-| 2 | **Hero** | Composição da clínica ao fundo, degradê escuro atrás da copy, headline "Para crescer, seu espaço também precisa estar à altura." e os 3 diferenciais numa faixa verde |
-| 3 | **Em qual dessas situações você mais se vê?** | 6 cards com imagem representativa em cima e a situação embaixo |
-| 4 | **Montar uma clínica própria custa...** | Comparativo clínica própria × VALLENCI ("Aqui na VALLENCI: ✓ Você paga apenas pelo tempo de uso.") |
-| 5 | **Nossa Estrutura** | 3 diferenciais e um bloco estático: vídeo vertical + colagem de fotos |
-| 6 | **Como funciona** | Hora Avulsa, Banco de Horas ("Mais escolhido") e Turno Fixo ("Mais benefícios"), sem preços |
-| 7 | **Localização** | Carrossel com as fotos do prédio, endereço e botão "Como chegar" |
-| 8 | **Ecossistema VALLENCI** | 6 áreas em órbita e faixa contínua de logos de profissionais e parceiros |
-| 9 | **Quem já está aqui** | Carrossel de profissionais (3 por vez no desktop, 1 no celular) |
-| 10 | **FAQ** | Acordeão |
-| 11 | **CTA final** | "Pronto para dar o próximo passo no seu atendimento?" |
-| 12 | **Rodapé** | "Clínica VALLENCI", contato, Instagram e localização |
-
-**Botão de WhatsApp:** um único padrão em todo o site: ícone do WhatsApp nas cores da VALLENCI, texto "Toque para saber mais" e pulsação sutil (classe `.btn-wa`). Ele aparece no menu, no hero, nos planos, no FAQ, no CTA final e como botão flutuante. No celular, o flutuante surge depois do hero para não cobrir os diferenciais.
-
----|---|---|
 | 1 | **Menu** | Integrado ao hero, sobre a imagem; fica sólido ao rolar. Logo + Estrutura, Localização, Ecossistema, Valores e Dúvidas, com **Fale Conosco** em destaque |
 | 2 | **Hero** | Composição da clínica como fundo e degradê escuro à esquerda. Copy com hierarquia de tamanhos, pesos e sublinhados, CTA "Quero conhecer o espaço" e 3 diferenciais com ícones |
 | 3 | **Talvez você se reconheça** | 6 situações em frases curtas |
@@ -63,7 +47,7 @@ Tipografia (Google Fonts): **Cormorant Garamond** nos títulos, **Manrope** nos 
 Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **GitHub Pages**.
 
 - HTML5 semântico, CSS3 puro e JavaScript vanilla
-- Imagens em WebP otimizado
+- Imagens em WebP otimizado (cerca de 1,7 MB no total)
 - Mobile-first, sem rolagem horizontal de 320px a 1920px
 - Respeita `prefers-reduced-motion`, foco visível para teclado e textos alternativos nas imagens
 
@@ -78,7 +62,6 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── tracking.js       # GA4, Meta Pixel e conversão do Google Ads (ativados pelos IDs)
 └── assets/
     ├── hero-clinica-vallenci.webp
-    ├── situacoes/    # Imagens dos 6 cards de situações
     ├── marca/        # Símbolo, logotipo e favicon nas cores oficiais
     ├── estrutura/    # Recepção, salas com maca e consultórios
     ├── localizacao/  # Fachada, entrada, área externa e vista aérea
@@ -103,29 +86,17 @@ Cada botão pode ter uma mensagem própria de WhatsApp (`data-wa-msg`). Os cards
 
 ### Adicionar um profissional
 
-Em `index.html`, duplique um `<article class="pro-card">` no bloco "Quem já está aqui":
-
-- **Foto:** troque o `.pro-photo-placeholder` por `<img src="assets/profissionais/nome.webp" alt="…">`.
-- **Depoimento:** logo após `.pro-info`, inclua `<blockquote class="pro-quote">“…”</blockquote>`, sempre com a fala real do profissional.
-- **Selo:** `<p class="pro-seal">` com Hora avulsa, Banco de horas ou Turno fixo.
-
-### Adicionar um logo ao ecossistema
-
-Salve a imagem quadrada em `assets/parceiros/` e inclua um `<li><img …></li>` na lista `.marquee-track`. A duplicação para a rolagem contínua é feita automaticamente pelo `script.js`.
-
-### Vídeo vertical da seção Nossa Estrutura
-
-Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativar, salve o arquivo em `assets/video/apresentacao.mp4` e troque a `<img>` dentro de `.showcase-video` pelo `<video>` indicado no comentário do HTML.
+Em `index.html`, duplique um `<article class="pro-card">` no bloco "Quem já está aqui". Para trocar o marcador de iniciais pela foto, substitua o `.pro-photo-placeholder` por `<img src="assets/profissionais/nome.webp" alt="…">`. Depoimentos entram somente com a fala real do profissional.
 
 ---
 
 ## Pendências de conteúdo
 
 - [ ] Número do WhatsApp e URL do Instagram
-- [ ] Vídeo vertical de apresentação da clínica (seção Nossa Estrutura)
-- [ ] Fotos, modalidade, especialidade e frase ("O que você mais gosta na VALLENCI?") de cada profissional
+- [ ] Fotos de Ivone Dantas, Thiago Cardoso e Camila Oliveira (e depoimentos reais, quando houver)
 - [ ] Validar as respostas do FAQ com a clínica
 - [ ] IDs de rastreamento (GA4, Meta Pixel, Google Ads), se forem usados
+- [ ] Ajustes do vídeo de revisão e das imagens de referência do documento de ajustes
 
 ---
 
