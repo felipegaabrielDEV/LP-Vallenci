@@ -9,7 +9,7 @@ const metaContent = name => document.querySelector(`meta[name="${name}"]`)?.cont
    preencher waLinksByOrigin: a origem da visita (UTM) passa a definir o
    destino de todos os botões, sem mudar visual, texto ou posição.
    -------------------------------------------------------------------------- */
-const waDefaultMessage = "Olá! Vim pelo site e gostaria de conhecer a estrutura da Clínica VALLENCI.";
+const waDefaultMessage = "Olá! Sou profissional, vim pelo site e gostaria de mais informações sobre as salas.";
 const waNumber = metaContent("whatsapp-number").replace(/\D/g, "");
 const waLinksByOrigin = {
     // instagram_bio: "https://tintim.link/whatsapp/.../...",

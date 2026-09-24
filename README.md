@@ -121,9 +121,10 @@ Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativ
 
 ## Pendências de conteúdo
 
-- [ ] Número do WhatsApp e URL do Instagram
+- [x] WhatsApp (79) 99647-4061 e Instagram @vallencisaude
+- [ ] Novas fotos da clínica (seção Nossa Estrutura)
 - [ ] Vídeo vertical de apresentação da clínica (seção Nossa Estrutura)
-- [ ] Fotos, modalidade, especialidade e frase ("O que você mais gosta na VALLENCI?") de cada profissional
+- [ ] Fotos, modalidade, especialidade e depoimento ("O que você mais gosta na VALLENCI?") de cada profissional
 - [ ] Validar as respostas do FAQ com a clínica
 - [ ] IDs de rastreamento (GA4, Meta Pixel, Google Ads), se forem usados
 
