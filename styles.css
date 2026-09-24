@@ -692,8 +692,24 @@ body.nav-open .menu-toggle span:last-child {
     font-weight: 700;
 }
 
-.hero-copy .btn-wa {
-    margin-top: 30px;
+/* Botão do hero um pouco maior que o padrão; no desktop fica centralizado
+   sob os parágrafos (no celular, à esquerda, livre do botão flutuante) */
+.hero-cta {
+    display: flex;
+    max-width: 540px;
+    margin-top: 32px;
+}
+
+.hero-cta .btn-wa {
+    min-height: 58px;
+    padding: 16px 30px 16px 24px;
+    gap: 12px;
+    font-size: 1rem;
+}
+
+.hero-cta .btn-wa .icon {
+    width: 24px;
+    height: 24px;
 }
 
 /* Diferenciais: barra clara com ícones em verde */
@@ -2448,6 +2464,23 @@ body.nav-open .menu-toggle span:last-child {
        dissolvendo na foto ao redor */
     .hero-copy {
         position: relative;
+    }
+
+    .hero-cta {
+        justify-content: center;
+        margin-top: 36px;
+    }
+
+    .hero-cta .btn-wa {
+        min-height: 64px;
+        padding: 18px 40px 18px 32px;
+        gap: 13px;
+        font-size: 1.1rem;
+    }
+
+    .hero-cta .btn-wa .icon {
+        width: 27px;
+        height: 27px;
     }
 
     .hero-copy::before {
