@@ -320,29 +320,52 @@ button {
     }
 }
 
+/* Botão flutuante: ícone oficial do WhatsApp (círculo verde com pulsação) */
 .wa-float {
     position: fixed;
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom));
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
     z-index: 45;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    box-shadow: 0 14px 30px -10px rgba(37, 211, 102, .65), 0 4px 12px rgba(0, 0, 0, .18);
+    cursor: pointer;
+    transition: transform .3s var(--ease);
 }
 
-/* No celular, o flutuante aparece depois do hero (que já tem o mesmo botão),
-   para não cobrir os diferenciais. */
-@media (max-width: 639px) {
-    .wa-float {
-        opacity: 0;
-        visibility: hidden;
-        translate: 0 16px;
-        transition: opacity .35s, translate .35s var(--ease), visibility 0s .35s, transform .25s, box-shadow .25s;
+.wa-float::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: pulse 2.6s var(--ease) infinite;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: .7;
     }
 
-    .wa-float.is-visible {
-        opacity: 1;
-        visibility: visible;
-        translate: 0 0;
-        transition: opacity .35s, translate .35s var(--ease), transform .25s, box-shadow .25s;
+    to {
+        transform: scale(1.5);
+        opacity: 0;
     }
+}
+
+.wa-float:hover {
+    transform: scale(1.07);
+}
+
+.wa-float .icon {
+    width: 31px;
+    height: 31px;
 }
 
 /* --------------------------------------------------------------------------
@@ -2170,10 +2193,6 @@ body.nav-open .menu-toggle span:last-child {
         padding: 14px;
     }
 
-    .wa-float {
-        right: 22px;
-        bottom: calc(22px + env(safe-area-inset-bottom));
-    }
 }
 
 /* ==========================================================================

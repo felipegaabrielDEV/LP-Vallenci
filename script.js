@@ -60,13 +60,10 @@ if (instagramUrl) document.querySelectorAll("[data-instagram]").forEach(link => 
    -------------------------------------------------------------------------- */
 const header = document.getElementById("siteHeader");
 const progress = document.getElementById("scrollProgress");
-const hero = document.getElementById("inicio");
-const floatingWa = document.querySelector(".wa-float");
 function updateScrollUI() {
     const max = document.documentElement.scrollHeight - innerHeight;
     progress.style.width = `${max ? scrollY / max * 100 : 0}%`;
     header.classList.toggle("scrolled", scrollY > 24);
-    floatingWa?.classList.toggle("is-visible", !hero || hero.getBoundingClientRect().bottom < innerHeight * .55);
 }
 addEventListener("scroll", updateScrollUI, { passive: true });
 updateScrollUI();
