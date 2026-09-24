@@ -574,15 +574,35 @@ body.nav-open .menu-toggle span:last-child {
 }
 
 /* Linhas curvas sutis do fundo */
-/* Arcos finos dourados do fundo (como na referência) */
 .hero-curves {
     position: absolute;
     inset: 0;
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 800' preserveAspectRatio='none' fill='none' stroke-linecap='round'%3E%3Cpath d='M-20 250C150 90 420 10 760 -30' stroke='%23b9a46e' stroke-opacity='.62' stroke-width='1.3' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M-20 292C170 120 460 42 860 -10' stroke='%23b9a46e' stroke-opacity='.3' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M-30 560C120 600 250 700 300 830' stroke='%23b9a46e' stroke-opacity='.5' stroke-width='1.2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") left top / 100% 100% no-repeat;
-    opacity: .95;
+}
+
+.hero-curves::before,
+.hero-curves::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(131, 131, 108, .32);
+}
+
+.hero-curves::before {
+    width: 150vw;
+    height: 150vw;
+    left: -96vw;
+    top: 30%;
+}
+
+.hero-curves::after {
+    width: 175vw;
+    height: 175vw;
+    left: -112vw;
+    top: 36%;
+    border-color: rgba(131, 131, 108, .18);
 }
 
 .hero-inner {
@@ -2405,55 +2425,22 @@ body.nav-open .menu-toggle span:last-child {
         object-position: 50% 50%;
     }
 
-    /* A névoa clara fica ancorada no bloco de texto (::before desfoca a foto,
-       ::after aplica o off-white com brilho), então acompanha a copy em
-       qualquer largura de tela. */
     .hero-shade {
-        background: linear-gradient(0deg, rgba(250, 248, 243, .4) 0%, rgba(250, 248, 243, 0) 24%);
+        background: linear-gradient(90deg, rgba(250, 248, 243, .99) 0%, rgba(250, 248, 243, .95) 30%, rgba(250, 248, 243, .74) 43%, rgba(250, 248, 243, .3) 56%, rgba(250, 248, 243, 0) 70%);
     }
 
-    .hero-curves {
-        right: auto;
-        width: min(1150px, 72%);
+    .hero-curves::before {
+        width: 980px;
+        height: 980px;
+        left: -560px;
+        top: -200px;
     }
 
-    .hero-copy {
-        position: relative;
-        --haze: clamp(190px, 21vw, 390px);
-    }
-
-    .hero h1 {
-        font-size: clamp(4rem, 6.3vw, 5.2rem);
-    }
-
-    .hero-copy::before,
-    .hero-copy::after {
-        content: "";
-        position: absolute;
-        top: -100vh;
-        bottom: -100vh;
-        left: -100vw;
-        right: calc(-1 * var(--haze));
-        z-index: -2;
-        pointer-events: none;
-    }
-
-    .hero-copy::before {
-        -webkit-backdrop-filter: blur(7px) saturate(1.05);
-        backdrop-filter: blur(7px) saturate(1.05);
-        -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - var(--haze) - 160px), rgba(0, 0, 0, .55) calc(100% - var(--haze) * .6), transparent 100%);
-        mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - var(--haze) - 160px), rgba(0, 0, 0, .55) calc(100% - var(--haze) * .6), transparent 100%);
-    }
-
-    .hero-copy::after {
-        background:
-            radial-gradient(900px 640px at calc(100% - var(--haze) - 330px) 50%, rgba(255, 255, 255, .62), rgba(255, 255, 255, 0) 70%),
-            linear-gradient(90deg,
-                rgba(250, 248, 243, .95) 0,
-                rgba(250, 248, 243, .9) calc(100% - var(--haze) - 150px),
-                rgba(250, 248, 243, .74) calc(100% - var(--haze) + 10px),
-                rgba(250, 248, 243, .36) calc(100% - var(--haze) * .45),
-                rgba(250, 248, 243, 0) 100%);
+    .hero-curves::after {
+        width: 1180px;
+        height: 1180px;
+        left: -700px;
+        top: -300px;
     }
 
     .hero-inner {
