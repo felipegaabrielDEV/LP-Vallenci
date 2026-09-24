@@ -2425,8 +2425,23 @@ body.nav-open .menu-toggle span:last-child {
         object-position: 50% 50%;
     }
 
+    /* Véu leve, só o suficiente para a leitura: a foto da clínica aparece
+       por trás da copy. As paradas acompanham a coluna de texto. */
     .hero-shade {
-        background: linear-gradient(90deg, rgba(250, 248, 243, .99) 0%, rgba(250, 248, 243, .95) 30%, rgba(250, 248, 243, .74) 43%, rgba(250, 248, 243, .3) 56%, rgba(250, 248, 243, 0) 70%);
+        background: linear-gradient(90deg, rgba(250, 248, 243, .72) 0, rgba(250, 248, 243, .62) max(372px, 50% - 228px), rgba(250, 248, 243, .34) max(592px, 50% - 8px), rgba(250, 248, 243, .08) max(772px, 50% + 172px), rgba(250, 248, 243, 0) max(902px, 50% + 302px));
+    }
+
+    .hero-eyebrow {
+        color: var(--verde);
+    }
+
+    .hero-eyebrow,
+    .hero-lead {
+        text-shadow: 0 0 18px rgba(250, 248, 243, .9), 0 0 6px rgba(250, 248, 243, .75);
+    }
+
+    .hero h1 {
+        text-shadow: 0 0 26px rgba(250, 248, 243, .7);
     }
 
     .hero-curves::before {
