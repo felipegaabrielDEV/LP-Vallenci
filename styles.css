@@ -2444,6 +2444,24 @@ body.nav-open .menu-toggle span:last-child {
         text-shadow: 0 0 26px rgba(250, 248, 243, .7);
     }
 
+    /* Brilho claro atrás da copy: fundo quase branco sob o texto,
+       dissolvendo na foto ao redor */
+    .hero-copy {
+        position: relative;
+    }
+
+    .hero-copy::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -150px;
+        right: -200px;
+        bottom: -150px;
+        left: -320px;
+        pointer-events: none;
+        background: radial-gradient(closest-side, rgba(250, 248, 243, .95) 0, rgba(250, 248, 243, .9) 45%, rgba(250, 248, 243, .62) 72%, rgba(250, 248, 243, .24) 88%, rgba(250, 248, 243, 0) 100%);
+    }
+
     .hero-curves::before {
         width: 980px;
         height: 980px;
