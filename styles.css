@@ -1548,7 +1548,9 @@ body.nav-open .menu-toggle span:last-child {
     min-width: 0;
 }
 
+/* Botão no pé do card, centralizado na largura do card */
 .plan .btn-wa {
+    align-self: center;
     max-width: 100%;
     margin-top: auto;
 }
@@ -1633,8 +1635,21 @@ body.nav-open .menu-toggle span:last-child {
     color: var(--oliva-escuro);
 }
 
+/* No card verde, o botão fica claro (off-white) para se destacar do fundo */
 .plan-featured .btn-wa {
-    border-color: rgba(242, 240, 234, .45);
+    background: linear-gradient(115deg, #fff 0%, var(--branco) 52%, #e6e1d5 100%);
+    background-size: 220% 100%;
+    border-color: rgba(255, 255, 255, .7);
+    color: var(--verde);
+    box-shadow: 0 14px 30px -12px rgba(30, 32, 26, .55);
+}
+
+.plan-featured .btn-wa .icon {
+    color: var(--oliva-escuro);
+}
+
+.plan-featured .btn-wa::after {
+    background: linear-gradient(90deg, transparent, rgba(131, 131, 108, .22), transparent);
 }
 
 .plan-premium {
