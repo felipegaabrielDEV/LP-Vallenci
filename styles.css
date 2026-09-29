@@ -1886,7 +1886,7 @@ body.nav-open .menu-toggle span:last-child {
 
 .pro-photo {
     position: relative;
-    flex: 1 0 auto;
+    flex: none;
     aspect-ratio: 4 / 4.2;
     overflow: hidden;
     background: var(--creme);
@@ -1902,6 +1902,7 @@ body.nav-open .menu-toggle span:last-child {
 
 .pro-photo img {
     object-fit: cover;
+    object-position: 50% 18%;
     transition: transform .8s var(--ease);
 }
 
@@ -1976,15 +1977,17 @@ body.nav-open .menu-toggle span:last-child {
     color: var(--oliva-escuro);
 }
 
+/* Selo da modalidade e, abaixo, a frase do profissional */
 .pro-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 18px 22px 22px;
+    gap: 14px;
+    padding: 18px 22px 24px;
 }
 
 .pro-quote {
-    margin-bottom: 16px;
     font-family: var(--serif);
     font-size: 1.2rem;
     font-style: italic;

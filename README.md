@@ -20,28 +20,12 @@ A ordem segue o documento de ajustes do cliente (revisão de 23/09):
 | 6 | **Como funciona** | Hora Avulsa, Banco de Horas ("Mais escolhido") e Turno Fixo ("Mais benefícios"), sem preços |
 | 7 | **Localização** | Carrossel com as fotos do prédio, endereço e botão "Como chegar" |
 | 8 | **Ecossistema VALLENCI** | 6 áreas em órbita e faixa contínua de logos de profissionais e parceiros |
-| 9 | **Quem já está aqui** | Carrossel de profissionais (3 por vez no desktop, 1 no celular) |
+| 9 | **Quem já está aqui** | Carrossel de profissionais (3 por vez no desktop, 1 no celular): foto com nome e especialidade sobrepostos, selo da modalidade e depoimento |
 | 10 | **FAQ** | Acordeão |
 | 11 | **CTA final** | "Pronto para dar o próximo passo no seu atendimento?" |
 | 12 | **Rodapé** | "Clínica VALLENCI", contato, Instagram e localização |
 
-**Botão de WhatsApp:** um único padrão em todo o site: ícone do WhatsApp nas cores da VALLENCI, texto "Toque para saber mais" e pulsação sutil (classe `.btn-wa`). Ele aparece no menu, no hero, nos planos, no FAQ, no CTA final e como botão flutuante. No celular, o flutuante surge depois do hero para não cobrir os diferenciais.
-
----|---|---|
-| 1 | **Menu** | Integrado ao hero, sobre a imagem; fica sólido ao rolar. Logo + Estrutura, Localização, Ecossistema, Valores e Dúvidas, com **Fale Conosco** em destaque |
-| 2 | **Hero** | Composição da clínica como fundo e degradê escuro à esquerda. Copy com hierarquia de tamanhos, pesos e sublinhados, CTA "Quero conhecer o espaço" e 3 diferenciais com ícones |
-| 3 | **Talvez você se reconheça** | 6 situações em frases curtas |
-| 4 | **Montar uma clínica própria custa...** | Comparativo em dois cards (clínica própria × VALLENCI) e o fechamento "O risco não é montar uma clínica…" |
-| 5 | **Nossa Estrutura** | 4 diferenciais (ícone + título) e um carrossel grande com as fotos reais |
-| 6 | **Localização** | Carrossel com as fotos do prédio, endereço e botão "Como chegar" (Google Maps) |
-| 7 | **Ecossistema VALLENCI** | Áreas da saúde em órbita e faixa de logos dos parceiros |
-| 8 | **Prova social** | Carrossel de profissionais (3 por vez no desktop, 1 no celular) com selo do formato utilizado |
-| 9 | **Como funciona** | Hora Avulsa, Banco de Horas ("Mais escolhido") e Turno Fixo ("Mais benefícios"), sem preços |
-| 10 | **FAQ** | Acordeão |
-| 11 | **CTA final** | "Pronto para dar o próximo passo no seu atendimento?" |
-| 12 | **Rodapé** | "Clínica VALLENCI", contato, Instagram e localização |
-
-Botão flutuante com o **ícone oficial do WhatsApp** em todas as telas.
+**Botão de WhatsApp:** um único padrão em todo o site: ícone do WhatsApp nas cores da VALLENCI, texto "Toque para saber mais" e pulsação sutil (classe `.btn-wa`). Ele aparece no menu, no hero, nos planos, no FAQ e no CTA final. O botão flutuante é o círculo verde com o ícone oficial do WhatsApp.
 
 ---
 
@@ -105,9 +89,10 @@ Cada botão pode ter uma mensagem própria de WhatsApp (`data-wa-msg`). Os cards
 
 Em `index.html`, duplique um `<article class="pro-card">` no bloco "Quem já está aqui":
 
-- **Foto:** troque o `.pro-photo-placeholder` por `<img src="assets/profissionais/nome.webp" alt="…">`.
-- **Depoimento:** logo após `.pro-info`, inclua `<blockquote class="pro-quote">“…”</blockquote>`, sempre com a fala real do profissional.
-- **Selo:** `<p class="pro-seal">` com Hora avulsa, Banco de horas ou Turno fixo.
+- **Foto:** retrato vertical 4:5 (até 800 × 1000 px, em WebP), com o rosto no terço de cima, em `assets/profissionais/`. Troque o `.pro-photo-placeholder` por `<img src="assets/profissionais/nome.webp" alt="…">`.
+- **Etiqueta sobre a foto (`.pro-tag`):** nome e "Formação · Especialidade".
+- **Selo:** `<p class="pro-seal">` com Fundadora, Hora avulsa, Banco de horas ou Turno fixo.
+- **Depoimento:** logo depois do selo, `<blockquote class="pro-quote">“…”</blockquote>`, sempre com a fala real do profissional.
 
 ### Adicionar um logo ao ecossistema
 
@@ -124,7 +109,10 @@ Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativ
 - [x] WhatsApp (79) 99647-4061 e Instagram @vallencisaude
 - [ ] Novas fotos da clínica (seção Nossa Estrutura)
 - [ ] Vídeo vertical de apresentação da clínica (seção Nossa Estrutura)
-- [ ] Fotos, modalidade, especialidade e depoimento ("O que você mais gosta na VALLENCI?") de cada profissional
+- [x] Fotos e depoimentos de Ivone, Camila, Thiago, Lua Clara, Ercivan e Vitória (documento "PROFISSIONAIS PARA O SITE", 28/09)
+- [ ] Depoimento da Anna Waleska
+- [ ] Foto, especialidade e depoimento de Daniela Gama, Andreia Pereira, Lavínia Araújo, Luana e Luíza Dantas
+- [ ] Especialidade do Ercivan Messias
 - [ ] Validar as respostas do FAQ com a clínica
 - [ ] IDs de rastreamento (GA4, Meta Pixel, Google Ads), se forem usados
 
