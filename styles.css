@@ -632,7 +632,7 @@ body.nav-open .menu-toggle span:last-child {
 }
 
 .hero-copy {
-    max-width: 640px;
+    max-width: 720px;
 }
 
 .hero-eyebrow {
@@ -663,6 +663,14 @@ body.nav-open .menu-toggle span:last-child {
     line-height: 1;
     letter-spacing: -.012em;
     color: var(--verde-noite);
+}
+
+/* Celulares muito estreitos (menos de 360px): letra um pouco menor para
+   cada verso do título caber numa linha só */
+@media (max-width: 359px) {
+    .hero h1 {
+        font-size: 11vw;
+    }
 }
 
 .hero h1 em {
@@ -2776,10 +2784,6 @@ body.nav-open .menu-toggle span:last-child {
 }
 
 @media (min-width: 1300px) {
-    .hero-copy {
-        max-width: 720px;
-    }
-
     .hero h1 {
         font-size: 5.6rem;
     }
