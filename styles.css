@@ -2286,6 +2286,18 @@ body.nav-open .menu-toggle span:last-child {
     color: #fff;
 }
 
+.footer-links span {
+    margin: 0 10px;
+    color: rgba(242, 240, 234, .45);
+}
+
+.cookie-text a {
+    color: var(--verde);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .footer-bottom {
     padding: 16px var(--gutter);
     background: linear-gradient(90deg, var(--oliva-escuro), var(--oliva));
