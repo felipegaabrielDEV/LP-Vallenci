@@ -25,7 +25,7 @@ A ordem segue o documento de ajustes do cliente (revisão de 23/09):
 | 11 | **CTA final** | "Pronto para dar o próximo passo no seu atendimento?" |
 | 12 | **Rodapé** | "Clínica VALLENCI", contato, Instagram e localização |
 
-**Formulário antes do WhatsApp:** todos os botões de WhatsApp abrem uma janela com Nome, WhatsApp com DDD, área de atuação e pacientes por mês. Depois de validar, a pessoa segue para o WhatsApp com as respostas já na mensagem e confirma o envio por lá (`lead-form.js`). O rastreamento recebe `form_open`, `form_start`, `generate_lead` e `whatsapp_click`, sem nome nem telefone.
+**Formulário antes do WhatsApp:** todos os botões de WhatsApp abrem uma janela com Nome, WhatsApp com DDD, área de atuação e pacientes por mês. Depois de validar, a pessoa segue para o WhatsApp com as respostas já na mensagem e confirma o envio por lá (`lead-form.js`). O rastreamento recebe `form_open`, `form_start`, `form_error`, `generate_lead` e `whatsapp_click`. O nome nunca vai; o telefone só vai embaralhado (SHA-256), para as conversões otimizadas do Google Ads.
 
 **Botão de WhatsApp:** um único padrão em todo o site: ícone do WhatsApp nas cores da VALLENCI, texto "Toque para saber mais" e pulsação sutil (classe `.btn-wa`). Ele aparece no menu, no hero, nos planos, no FAQ e no CTA final. O botão flutuante é o círculo verde com o ícone oficial do WhatsApp.
 
@@ -62,7 +62,8 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── styles.css        # Identidade visual, layout responsivo e animações
 ├── script.js         # Menu, carrosséis, FAQ e links do WhatsApp
 ├── lead-form.js      # Formulário que abre antes do WhatsApp
-├── tracking.js       # GA4, Meta Pixel e conversão do Google Ads (ativados pelos IDs)
+├── eventos.js        # Eventos para o Google Tag Manager (formulário e seções vistas)
+├── consent.js        # Aviso de cookies (LGPD) e Modo de Consentimento do Google
 └── assets/
     ├── hero-clinica-vallenci.webp
     ├── situacoes/    # Imagens dos 6 cards de situações
@@ -76,17 +77,30 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 
 ## Configuração rápida
 
-Tudo fica em meta tags no `<head>` do `index.html`:
+Contato, em meta tags no `<head>` do `index.html`:
 
 | Meta tag | O que preencher |
 |---|---|
 | `whatsapp-number` | Número com DDI e DDD, só dígitos (ex.: `5579999999999`) |
 | `instagram-url` | URL completa do perfil |
-| `ga-measurement-id` | ID do Google Analytics 4 (`G-...`) |
-| `meta-pixel-id` | ID do Meta Pixel |
-| `google-ads-id` / `google-ads-conversion-label` | Conta e rótulo de conversão do Google Ads |
 
 A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das respostas do formulário. Se houver links rastreáveis por canal (ex.: Tintim), basta preencher `waLinksByOrigin` no `script.js`: a origem da visita (UTM) passa a definir o destino dos botões.
+
+### Rastreamento e cookies
+
+- **Google Tag Manager `GTM-NFX8MX4W`** instalado no `<head>` e logo depois do `<body>`. GA4, Google Ads, Meta, Clarity e Tintim são configurados **no painel do GTM**, sem mexer no site.
+- **Consentimento (LGPD):** tudo começa negado. O aviso de cookies (`consent.js`) grava a escolha em `localStorage` (`vl_consent`), atualiza o Modo de Consentimento do Google e envia `consent_update` ao GTM. O link "Preferências de cookies", no rodapé, reabre o aviso; ao retirar uma permissão, os cookies de medição são apagados e a página recarrega.
+- **Eventos no `dataLayer`** (`eventos.js` e `lead-form.js`), todos com `event_id`:
+
+| Evento | Quando | Parâmetros |
+|---|---|---|
+| `form_open` | Abriu o formulário | `form_id`, `cta_position` |
+| `form_start` | Mexeu no primeiro campo | `form_id`, `cta_position` |
+| `form_error` | Tentou enviar com erro | `form_id`, `error_fields` |
+| `generate_lead` | Envio válido | `form_id`, `cta_position`, `area_atuacao`, `pacientes_mes`, `ec_phone_sha256` |
+| `whatsapp_click` | Seguiu para o WhatsApp | `cta_position`, `link_url` |
+| `section_view` | Viu Estrutura, Localização ou Valores por 1 s | `section_name` (`fotos_estrutura`, `fotos_localizacao`, `valores`) |
+| `consent_update` | Escolheu no aviso de cookies | `consent_analytics`, `consent_marketing` |
 
 ### Adicionar um profissional
 
@@ -117,7 +131,9 @@ Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativ
 - [ ] Foto, especialidade e depoimento de Daniela Gama, Andreia Pereira, Lavínia Araújo, Luana e Luíza Dantas
 - [ ] Especialidade do Ercivan Messias
 - [ ] Validar as respostas do FAQ com a clínica
-- [ ] IDs de rastreamento (GA4, Meta Pixel, Google Ads), se forem usados
+- [x] Google Tag Manager, aviso de cookies e eventos no site
+- [ ] Política de privacidade (página) e revisão jurídica do aviso de cookies
+- [ ] Configuração do painel do GTM: GA4, Clarity, conversões do Google Ads, Meta e Tintim (IDs com o gestor de tráfego)
 
 ---
 

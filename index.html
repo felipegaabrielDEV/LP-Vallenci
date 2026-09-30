@@ -4,6 +4,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+    <!-- Consentimento (LGPD): tudo negado por padrão; reaplica a escolha salva do visitante.
+         Precisa vir antes do Google Tag Manager. O aviso fica no consent.js. -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag("consent", "default", {
+            ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+            analytics_storage: "denied", wait_for_update: 500
+        });
+        gtag("set", "ads_data_redaction", true);
+        (function () {
+            try {
+                var c = JSON.parse(localStorage.getItem("vl_consent") || "null");
+                if (c && c.v === 1) {
+                    gtag("consent", "update", {
+                        analytics_storage: c.a ? "granted" : "denied",
+                        ad_storage: c.m ? "granted" : "denied",
+                        ad_user_data: c.m ? "granted" : "denied",
+                        ad_personalization: c.m ? "granted" : "denied"
+                    });
+                    dataLayer.push({ event: "consent_update", consent_analytics: !!c.a, consent_marketing: !!c.m });
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <!-- Google Tag Manager: GA4, Google Ads, Meta, Clarity e Tintim são configurados no painel do GTM -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : ""; j.async = true; j.src =
+                    "https://www.googletagmanager.com/gtm.js?id=" + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NFX8MX4W");</script>
+    <!-- End Google Tag Manager -->
     <title>Clínica VALLENCI | Salas para profissionais da saúde em Aracaju</title>
     <meta name="description"
         content="Atenda seus pacientes em uma estrutura profissional no Neo Office Jardins, em frente ao Shopping Jardins, em Aracaju. Salas equipadas, recepção estruturada e formatos que acompanham a sua agenda.">
@@ -20,11 +53,6 @@
     <meta name="whatsapp-number" content="5579996474061">
     <!-- Perfil do Instagram da clínica (URL completa). -->
     <meta name="instagram-url" content="https://www.instagram.com/vallencisaude/">
-    <!-- Rastreamento: preencha os IDs para ativar GA4, Meta Pixel e a conversão do Google Ads. -->
-    <meta name="ga-measurement-id" content="">
-    <meta name="meta-pixel-id" content="">
-    <meta name="google-ads-id" content="">
-    <meta name="google-ads-conversion-label" content="">
 
     <link rel="icon" type="image/png" href="assets/marca/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,10 +62,14 @@
         rel="stylesheet">
     <link rel="preload" as="image" href="assets/hero-clinica-vallenci.webp" media="(min-width: 761px)">
     <link rel="preload" as="image" href="assets/estrutura/recepcao-02.webp" media="(max-width: 760px)">
-    <link rel="stylesheet" href="styles.css?v=20260930-02">
+    <link rel="stylesheet" href="styles.css?v=20260930-03">
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFX8MX4W" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
         <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
         <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></symbol>
@@ -726,6 +758,9 @@
                     disponibilizamos o seu e-mail ou qualquer informação para terceiros. Jamais faremos nenhum tipo de
                     spam.</strong></p>
         </div>
+        <div class="footer-links">
+            <a href="#" data-consent-open>Preferências de cookies</a>
+        </div>
         <div class="footer-bottom">
             <p><strong>© Copyright <span id="year">2026</span> - Clínica VALLENCI.</strong> Todos os direitos reservados.</p>
         </div>
@@ -791,9 +826,32 @@
         <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg>
     </a>
 
+    <!-- Aviso de cookies (consent.js): aparece até o visitante escolher; reabre pelo rodapé -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="false" aria-labelledby="cookieTitle" aria-describedby="cookieText" hidden>
+        <p class="cookie-title" id="cookieTitle">Sua privacidade</p>
+        <p class="cookie-text" id="cookieText">Usamos cookies para medir o uso do site (estatística) e para mostrar anúncios da VALLENCI a quem já nos visitou (marketing). Você escolhe o que aceita.</p>
+        <div class="cookie-options" hidden>
+            <label class="cookie-option">
+                <input type="checkbox" id="cookieAnalytics">
+                <span><strong>Estatística</strong>Google Analytics e Microsoft Clarity, para entender como o site é usado.</span>
+            </label>
+            <label class="cookie-option">
+                <input type="checkbox" id="cookieMarketing">
+                <span><strong>Marketing</strong>Google Ads, Meta e Tintim, para medir e mostrar anúncios da VALLENCI.</span>
+            </label>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn" type="button" data-consent="recusar">Recusar</button>
+            <button class="cookie-btn cookie-btn-ghost" type="button" data-consent="personalizar">Personalizar</button>
+            <button class="cookie-btn cookie-btn-ghost" type="button" data-consent="salvar" hidden>Salvar escolha</button>
+            <button class="cookie-btn cookie-btn-primary" type="button" data-consent="aceitar">Aceitar</button>
+        </div>
+    </div>
+
     <script src="script.js?v=20260930-01" defer></script>
-    <script src="lead-form.js?v=20260930-01" defer></script>
-    <script src="tracking.js?v=20260930-01" defer></script>
+    <script src="eventos.js?v=20260930-01" defer></script>
+    <script src="lead-form.js?v=20260930-02" defer></script>
+    <script src="consent.js?v=20260930-01" defer></script>
 </body>
 
 </html>

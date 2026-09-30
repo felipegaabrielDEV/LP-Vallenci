@@ -3,7 +3,8 @@
    Qualquer botão com data-wa abre esta janela. Depois de validar, a pessoa
    segue para o WhatsApp da VALLENCI com as respostas já na mensagem e confirma
    o envio por lá. Sem JavaScript, os botões continuam indo direto ao WhatsApp.
-   Eventos (tracking.js): form_open, form_start, generate_lead, whatsapp_click.
+   Eventos (eventos.js → GTM): form_open, form_start, form_error,
+   generate_lead e whatsapp_click.
    -------------------------------------------------------------------------- */
 (() => {
     const modal = document.getElementById("leadModal");
@@ -39,8 +40,24 @@
         return d.length === 10 || d[2] === "9";
     }
 
+    /* Conversões otimizadas do Google Ads: o telefone vai só embaralhado
+       (SHA-256 do formato +55DDDNÚMERO), calculado enquanto a pessoa digita
+       para já estar pronto no envio. O GTM só usa com consentimento de marketing. */
+    let phoneHash = "";
+    let hashedPhone = "";
+    const e164 = value => validPhone(value) ? `+55${digits(value)}` : "";
+    function hashPhone() {
+        const phone = e164(fields.whatsapp.value);
+        if (!phone || phone === hashedPhone || !(window.crypto && crypto.subtle)) return;
+        crypto.subtle.digest("SHA-256", new TextEncoder().encode(phone)).then(buffer => {
+            phoneHash = [...new Uint8Array(buffer)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+            hashedPhone = phone;
+        }).catch(() => { });
+    }
+
     fields.whatsapp.addEventListener("input", () => {
         fields.whatsapp.value = formatPhone(fields.whatsapp.value);
+        hashPhone();
     });
 
     const checks = {
@@ -152,14 +169,19 @@
         const base = wa.base || `https://wa.me/${(document.querySelector('meta[name="whatsapp-number"]')?.content || "").replace(/\D/g, "")}`;
         const url = `${base}${base.includes("?") ? "&" : "?"}text=${encodeURIComponent(message)}`;
 
-        // Só as respostas de múltipla escolha vão para o rastreamento; nome e telefone não
-        track("generate_lead", { form_id: "whatsapp_lead", cta_position: origin, area_atuacao: answers.area, pacientes_mes: answers.pacientes });
+        // Rastreamento: só as respostas de múltipla escolha. O nome nunca vai;
+        // o telefone só embaralhado, e é apagado do dataLayer logo depois
+        const lead = { form_id: "whatsapp_lead", cta_position: origin, area_atuacao: answers.area, pacientes_mes: answers.pacientes };
+        if (phoneHash && hashedPhone === e164(fields.whatsapp.value)) lead.ec_phone_sha256 = phoneHash;
+        track("generate_lead", lead);
+        if (lead.ec_phone_sha256) (window.dataLayer = window.dataLayer || []).push({ ec_phone_sha256: undefined });
         track("whatsapp_click", { cta_position: origin, link_url: base });
 
         const win = window.open(url, "_blank");
         if (win) win.opener = null;
         else window.location.href = url; // navegador bloqueou a nova aba: abre na mesma
         form.reset();
+        phoneHash = hashedPhone = "";
         Object.keys(fields).forEach(name => showError(name, false));
         close();
     });
