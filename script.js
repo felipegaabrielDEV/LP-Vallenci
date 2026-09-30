@@ -3,8 +3,8 @@ const metaContent = name => document.querySelector(`meta[name="${name}"]`)?.cont
 
 /* --------------------------------------------------------------------------
    WhatsApp
-   O número fica na meta tag "whatsapp-number" (index.html). Cada botão pode
-   ter uma mensagem própria em data-wa-msg; sem ela, usa a mensagem padrão.
+   O número fica na meta tag "whatsapp-number" (index.html). Os links servem de
+   reserva: com JavaScript, o clique abre antes o formulário (lead-form.js).
    Se no futuro houver links rastreáveis por origem (ex.: Tintim), basta
    preencher waLinksByOrigin: a origem da visita (UTM) passa a definir o
    destino de todos os botões, sem mudar visual, texto ou posição.
@@ -51,6 +51,9 @@ document.querySelectorAll("[data-wa]").forEach(link => {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
 });
+
+// Usado pelo formulário (lead-form.js), que abre antes do WhatsApp
+window.vallenciWa = { base: waBase, defaultMessage: waDefaultMessage };
 
 const instagramUrl = metaContent("instagram-url");
 if (instagramUrl) document.querySelectorAll("[data-instagram]").forEach(link => link.href = instagramUrl);

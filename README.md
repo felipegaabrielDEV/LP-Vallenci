@@ -25,6 +25,8 @@ A ordem segue o documento de ajustes do cliente (revisão de 23/09):
 | 11 | **CTA final** | "Pronto para dar o próximo passo no seu atendimento?" |
 | 12 | **Rodapé** | "Clínica VALLENCI", contato, Instagram e localização |
 
+**Formulário antes do WhatsApp:** todos os botões de WhatsApp abrem uma janela com Nome, WhatsApp com DDD, área de atuação e pacientes por mês. Depois de validar, a pessoa segue para o WhatsApp com as respostas já na mensagem e confirma o envio por lá (`lead-form.js`). O rastreamento recebe `form_open`, `form_start`, `generate_lead` e `whatsapp_click`, sem nome nem telefone.
+
 **Botão de WhatsApp:** um único padrão em todo o site: ícone do WhatsApp nas cores da VALLENCI, texto "Toque para saber mais" e pulsação sutil (classe `.btn-wa`). Ele aparece no menu, no hero, nos planos, no FAQ e no CTA final. O botão flutuante é o círculo verde com o ícone oficial do WhatsApp.
 
 ---
@@ -59,6 +61,7 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── index.html        # Estrutura e conteúdo de todas as seções
 ├── styles.css        # Identidade visual, layout responsivo e animações
 ├── script.js         # Menu, carrosséis, FAQ e links do WhatsApp
+├── lead-form.js      # Formulário que abre antes do WhatsApp
 ├── tracking.js       # GA4, Meta Pixel e conversão do Google Ads (ativados pelos IDs)
 └── assets/
     ├── hero-clinica-vallenci.webp
@@ -83,7 +86,7 @@ Tudo fica em meta tags no `<head>` do `index.html`:
 | `meta-pixel-id` | ID do Meta Pixel |
 | `google-ads-id` / `google-ads-conversion-label` | Conta e rótulo de conversão do Google Ads |
 
-Cada botão pode ter uma mensagem própria de WhatsApp (`data-wa-msg`). Os cards de "Como funciona", por exemplo, já informam a modalidade de interesse. Se houver links rastreáveis por canal (ex.: Tintim), basta preencher `waLinksByOrigin` no `script.js`: a origem da visita (UTM) passa a definir o destino dos botões.
+A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das respostas do formulário. Se houver links rastreáveis por canal (ex.: Tintim), basta preencher `waLinksByOrigin` no `script.js`: a origem da visita (UTM) passa a definir o destino dos botões.
 
 ### Adicionar um profissional
 

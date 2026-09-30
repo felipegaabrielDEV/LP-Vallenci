@@ -1,4 +1,4 @@
-/* Rastreamento: GA4, Meta Pixel e conversão do Google Ads no clique do WhatsApp.
+/* Rastreamento: GA4, Meta Pixel e conversão do Google Ads na ida ao WhatsApp.
    Os IDs ficam nas meta tags do <head> do index.html. Enquanto estiverem
    vazios, nenhuma tag externa é carregada. */
 (() => {
@@ -60,17 +60,20 @@
         }
     }
 
-    document.querySelectorAll("[data-wa]").forEach((link, index) => {
-        link.addEventListener("click", () => {
-            const parameters = {
-                cta_position: link.dataset.waOrigin || `whatsapp_cta_${index + 1}`,
-                link_url: link.href
-            };
+    /* Eventos do formulário antes do WhatsApp (chamados pelo lead-form.js):
+       form_open, form_start, generate_lead (envio válido) e whatsapp_click
+       (redirecionamento ao WhatsApp, que conta como conversão). Nenhum dado
+       pessoal (nome ou telefone) vai para as ferramentas. */
+    window.vallenciTrack = function (eventName, parameters = {}) {
+        trackEvent(eventName, parameters);
+        if (eventName === "generate_lead" && typeof window.fbq === "function") {
+            window.fbq("track", "Lead", { ...attributionPayload(), content_name: "Formulário WhatsApp", ...parameters });
+        }
+        if (eventName === "whatsapp_click") {
             reportGoogleAdsConversion();
-            trackEvent("whatsapp_click", parameters);
             if (typeof window.fbq === "function") {
                 window.fbq("track", "Contact", { ...attributionPayload(), content_name: "WhatsApp", cta_position: parameters.cta_position });
             }
-        });
-    });
+        }
+    };
 })();

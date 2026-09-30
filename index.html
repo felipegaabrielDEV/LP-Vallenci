@@ -34,7 +34,7 @@
         rel="stylesheet">
     <link rel="preload" as="image" href="assets/hero-clinica-vallenci.webp" media="(min-width: 761px)">
     <link rel="preload" as="image" href="assets/estrutura/recepcao-02.webp" media="(max-width: 760px)">
-    <link rel="stylesheet" href="styles.css?v=20260929-04">
+    <link rel="stylesheet" href="styles.css?v=20260930-01">
 </head>
 
 <body>
@@ -731,12 +731,69 @@
         </div>
     </footer>
 
+    <!-- Formulário antes do WhatsApp: abre em qualquer botão com data-wa (lead-form.js) -->
+    <div class="lead-modal" id="leadModal" hidden>
+        <div class="lead-backdrop" data-lead-close></div>
+        <div class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="leadTitle" aria-describedby="leadIntro">
+            <button class="lead-close" type="button" data-lead-close aria-label="Fechar formulário">
+                <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+            </button>
+            <p class="lead-eyebrow">Clínica VALLENCI</p>
+            <h2 id="leadTitle">Fale com a gente pelo <em>WhatsApp</em></h2>
+            <p class="lead-intro" id="leadIntro">Responda rapidinho para já chegarmos com as informações certas para você.</p>
+            <form class="lead-form" id="leadForm" novalidate>
+                <div class="lead-field">
+                    <label for="leadNome">Nome</label>
+                    <input id="leadNome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
+                    <p class="lead-error" id="leadNomeErro" hidden>Informe seu nome.</p>
+                </div>
+                <div class="lead-field">
+                    <label for="leadWhats">WhatsApp com DDD</label>
+                    <input id="leadWhats" name="whatsapp" type="tel" inputmode="numeric" placeholder="(79) 99999-9999" autocomplete="tel-national" maxlength="15" required>
+                    <p class="lead-error" id="leadWhatsErro" hidden>Informe um WhatsApp válido, com DDD.</p>
+                </div>
+                <div class="lead-field">
+                    <label for="leadArea">Qual é sua área de atuação?</label>
+                    <select id="leadArea" name="area" required>
+                        <option value="" selected disabled>Selecione uma opção</option>
+                        <option>Nutrição</option>
+                        <option>Medicina</option>
+                        <option>Fisioterapia</option>
+                        <option>Massoterapia</option>
+                        <option>Estética</option>
+                        <option>Psicologia</option>
+                        <option>Outra</option>
+                    </select>
+                    <p class="lead-error" id="leadAreaErro" hidden>Selecione sua área de atuação.</p>
+                </div>
+                <div class="lead-field">
+                    <label for="leadPacientes">Quantos pacientes você atende por mês?</label>
+                    <select id="leadPacientes" name="pacientes" required>
+                        <option value="" selected disabled>Selecione uma opção</option>
+                        <option>Ainda não tenho pacientes</option>
+                        <option>De 1 a 5 pacientes</option>
+                        <option>De 6 a 10 pacientes</option>
+                        <option>De 11 a 20 pacientes</option>
+                        <option>De 21 a 40 pacientes</option>
+                        <option>Mais de 40 pacientes</option>
+                    </select>
+                    <p class="lead-error" id="leadPacientesErro" hidden>Selecione uma opção.</p>
+                </div>
+                <button class="btn-wa lead-submit" type="submit">
+                    <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Continuar no WhatsApp</span>
+                </button>
+                <p class="lead-note">Você confirma o envio da mensagem no WhatsApp.</p>
+            </form>
+        </div>
+    </div>
+
     <a class="wa-float" data-wa data-wa-origin="botao_flutuante" aria-label="Fale com a Clínica VALLENCI pelo WhatsApp">
         <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg>
     </a>
 
-    <script src="script.js?v=20260924-03" defer></script>
-    <script src="tracking.js?v=20260924-01" defer></script>
+    <script src="script.js?v=20260930-01" defer></script>
+    <script src="lead-form.js?v=20260930-01" defer></script>
+    <script src="tracking.js?v=20260930-01" defer></script>
 </body>
 
 </html>
