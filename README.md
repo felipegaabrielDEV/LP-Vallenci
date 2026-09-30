@@ -64,6 +64,8 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── lead-form.js      # Formulário que abre antes do WhatsApp
 ├── eventos.js        # Eventos para o Google Tag Manager (formulário e seções vistas)
 ├── consent.js        # Aviso de cookies (LGPD) e Modo de Consentimento do Google
+├── politica-de-privacidade.html  # Política de privacidade (rascunho para revisão)
+├── docs/             # Passo a passo do GTM para o gestor de tráfego
 └── assets/
     ├── hero-clinica-vallenci.webp
     ├── situacoes/    # Imagens dos 6 cards de situações
@@ -90,6 +92,7 @@ A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das re
 
 - **Google Tag Manager `GTM-NFX8MX4W`** instalado no `<head>` e logo depois do `<body>`. GA4, Google Ads, Meta, Clarity e Tintim são configurados **no painel do GTM**, sem mexer no site.
 - **Consentimento (LGPD):** tudo começa negado. O aviso de cookies (`consent.js`) grava a escolha em `localStorage` (`vl_consent`), atualiza o Modo de Consentimento do Google e envia `consent_update` ao GTM. O link "Preferências de cookies", no rodapé, reabre o aviso; ao retirar uma permissão, os cookies de medição são apagados e a página recarrega.
+- **Passo a passo do painel do GTM** (variáveis, acionadores, tags e testes, com os nomes que o site envia): [`docs/GTM-PASSO-A-PASSO.md`](docs/GTM-PASSO-A-PASSO.md) e a versão em Word, `docs/GTM-PASSO-A-PASSO.docx`.
 - **Eventos no `dataLayer`** (`eventos.js` e `lead-form.js`), todos com `event_id`:
 
 | Evento | Quando | Parâmetros |
