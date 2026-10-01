@@ -3428,6 +3428,108 @@ body.lead-open {
     color: #fff;
 }
 
+/* --------------------------------------------------------------------------
+   Página 404 (endereço que não existe)
+   -------------------------------------------------------------------------- */
+.nf-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    background: var(--verde-noite);
+}
+
+.nf-main {
+    position: relative;
+    isolation: isolate;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: clamp(56px, 10vw, 110px) 0;
+    background: var(--verde-noite) url("assets/estrutura/recepcao-01.webp") center / cover;
+    color: var(--branco);
+    text-align: center;
+}
+
+.nf-main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(47, 50, 41, .9), rgba(47, 50, 41, .72));
+}
+
+.nf-content {
+    display: grid;
+    justify-items: center;
+    max-width: 620px;
+}
+
+.nf-code {
+    font-family: var(--serif);
+    font-size: clamp(5.5rem, 22vw, 9rem);
+    font-weight: 600;
+    font-style: italic;
+    line-height: .9;
+    color: var(--creme);
+    opacity: .9;
+}
+
+.nf-eyebrow {
+    margin-top: 14px;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--creme);
+}
+
+.nf-content h1 {
+    margin-top: 12px;
+    font-family: var(--serif);
+    font-size: clamp(2.1rem, 7vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--branco);
+}
+
+.nf-content h1 em {
+    font-weight: 600;
+    color: var(--creme);
+}
+
+.nf-text {
+    max-width: 480px;
+    margin-top: 14px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(242, 240, 234, .86);
+}
+
+.nf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.nf-btn-ghost {
+    border-color: rgba(242, 240, 234, .55);
+    color: var(--branco);
+}
+
+.nf-btn-ghost:hover {
+    background: rgba(242, 240, 234, .12);
+}
+
+@media (max-width: 480px) {
+    .nf-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+}
+
 /* ==========================================================================
    Movimento reduzido
    ========================================================================== */
