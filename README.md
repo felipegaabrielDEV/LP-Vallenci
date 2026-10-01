@@ -92,7 +92,11 @@ A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das re
 
 ### Prévia ao compartilhar o link
 
-`assets/compartilhar-vallenci.jpg` (1200 × 630, JPG) aparece quando o link é enviado no WhatsApp, Instagram ou Facebook. As tags `og:url` e `og:image` precisam do endereço completo: **ao publicar no domínio oficial, troque `https://felipegaabrieldev.github.io/LP-Vallenci/` pelo novo endereço** nas duas.
+`assets/compartilhar-vallenci.jpg` (1200 × 630, JPG) aparece quando o link é enviado no WhatsApp, Instagram ou Facebook. As tags `og:url` e `og:image` precisam do endereço completo: **ao publicar no domínio oficial, troque `https://felipegaabrieldev.github.io/LP-Vallenci/` pelo novo endereço** nas duas (e nos dados da clínica, abaixo).
+
+### Dados da clínica para o Google
+
+No `<head>` do `index.html` há um bloco `application/ld+json` (LocalBusiness) com nome, endereço, telefone, horário e Instagram, os mesmos do rodapé. Se algum dado mudar no rodapé, mude também ali. Ao publicar no domínio oficial, troque o endereço do GitHub nos campos `@id`, `url`, `image` e `logo` (`assets/marca/logo-512.png`). Para conferir: [Teste de pesquisa aprimorada do Google](https://search.google.com/test/rich-results).
 
 ### Rastreamento e cookies
 
