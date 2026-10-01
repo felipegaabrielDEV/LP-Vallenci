@@ -68,6 +68,7 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── docs/             # Passo a passo do GTM para o gestor de tráfego
 └── assets/
     ├── hero-clinica-vallenci.webp
+    ├── compartilhar-vallenci.jpg  # Prévia ao compartilhar o link (1200×630)
     ├── situacoes/    # Imagens dos 6 cards de situações
     ├── marca/        # Símbolo, logotipo e favicon nas cores oficiais
     ├── estrutura/    # Recepção, salas com maca e consultórios
@@ -87,6 +88,10 @@ Contato, em meta tags no `<head>` do `index.html`:
 | `instagram-url` | URL completa do perfil |
 
 A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das respostas do formulário. Se houver links rastreáveis por canal (ex.: Tintim), basta preencher `waLinksByOrigin` no `script.js`: a origem da visita (UTM) passa a definir o destino dos botões.
+
+### Prévia ao compartilhar o link
+
+`assets/compartilhar-vallenci.jpg` (1200 × 630, JPG) aparece quando o link é enviado no WhatsApp, Instagram ou Facebook. As tags `og:url` e `og:image` precisam do endereço completo: **ao publicar no domínio oficial, troque `https://felipegaabrieldev.github.io/LP-Vallenci/` pelo novo endereço** nas duas.
 
 ### Rastreamento e cookies
 
