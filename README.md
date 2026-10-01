@@ -131,7 +131,7 @@ Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativ
 - [ ] Vídeo vertical de apresentação da clínica (seção Nossa Estrutura)
 - [x] Fotos e depoimentos de Ivone, Camila, Thiago, Lua Clara, Ercivan e Vitória (documento "PROFISSIONAIS PARA O SITE", 28/09)
 - [ ] Depoimento da Anna Waleska
-- [ ] Foto, especialidade e depoimento de Daniela Gama, Andreia Pereira, Lavínia Araújo, Luana e Luíza Dantas
+- [ ] Foto, especialidade e depoimento de Daniela Gama, Andreia Pereira, Lavínia Araújo, Luana e Luíza Dantas (cards ocultos até a foto chegar, a pedido do cliente: ficam comentados no fim do carrossel em `index.html`)
 - [ ] Especialidade do Ercivan Messias
 - [ ] Validar as respostas do FAQ com a clínica
 - [x] Google Tag Manager, aviso de cookies e eventos no site
