@@ -3013,6 +3013,69 @@ body.lead-open {
     color: var(--texto-suave);
 }
 
+/* Confirmação depois do envio */
+.lead-success {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    padding: 6px 4px 2px;
+    text-align: center;
+}
+
+.lead-success[hidden] {
+    display: none;
+}
+
+.lead-success-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(131, 131, 108, .16);
+    color: var(--oliva-escuro);
+}
+
+.lead-success-icon .icon {
+    width: 30px;
+    height: 30px;
+    stroke-width: 2.2;
+}
+
+.lead-success h2 {
+    margin-top: 0;
+    padding-right: 0;
+}
+
+.lead-success h2:focus {
+    outline: none;
+}
+
+.lead-success .lead-intro {
+    margin-top: 0;
+}
+
+.lead-success .lead-intro strong {
+    color: var(--verde);
+}
+
+.lead-back {
+    padding: 8px 12px;
+    border: 0;
+    background: none;
+    color: var(--verde);
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.lead-back:hover {
+    color: var(--oliva-escuro);
+}
+
 @media (max-width: 480px) {
     .lead-modal {
         align-items: end;

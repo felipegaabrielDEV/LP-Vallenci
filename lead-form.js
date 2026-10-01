@@ -3,6 +3,7 @@
    Qualquer botão com data-wa abre esta janela. Depois de validar, a pessoa
    segue para o WhatsApp da VALLENCI com as respostas já na mensagem e confirma
    o envio por lá. Sem JavaScript, os botões continuam indo direto ao WhatsApp.
+   Depois do envio, a janela mostra uma confirmação com o link de novo.
    Eventos (eventos.js → GTM): form_open, form_start, form_error,
    generate_lead e whatsapp_click.
    -------------------------------------------------------------------------- */
@@ -12,6 +13,8 @@
     if (!modal || !form) return;
 
     const dialog = modal.querySelector(".lead-dialog");
+    const step = document.getElementById("leadStep");
+    const success = document.getElementById("leadSuccess");
     const fields = {
         nome: form.elements.nome,
         whatsapp: form.elements.whatsapp,
@@ -101,10 +104,30 @@
         return [...dialog.querySelectorAll("button, input, select, a[href]")].filter(el => !el.disabled && el.offsetParent !== null);
     }
 
+    /* Troca entre o formulário e a confirmação (depois do envio) */
+    function showStep(done) {
+        if (!step || !success) return;
+        step.hidden = done;
+        success.hidden = !done;
+        dialog.setAttribute("aria-labelledby", done ? "leadSuccessTitle" : "leadTitle");
+        if (done) dialog.removeAttribute("aria-describedby");
+        else dialog.setAttribute("aria-describedby", "leadIntro");
+    }
+
+    function showSuccess(nome, url) {
+        if (!step || !success) return close();
+        document.getElementById("leadSuccessNome").textContent = `, ${nome.split(" ")[0]}`;
+        document.getElementById("leadSuccessLink").href = url;
+        showStep(true);
+        dialog.scrollTop = 0;
+        document.getElementById("leadSuccessTitle").focus({ preventScroll: true });
+    }
+
     function open(button) {
         opener = button;
         origin = button.dataset.waOrigin || "sem_posicao";
         started = false;
+        showStep(false);
         modal.hidden = false;
         document.body.classList.add("lead-open");
         requestAnimationFrame(() => modal.classList.add("is-open"));
@@ -183,6 +206,7 @@
         form.reset();
         phoneHash = hashedPhone = "";
         Object.keys(fields).forEach(name => showError(name, false));
-        close();
+        // Confirmação no lugar do formulário, com um link caso o WhatsApp não tenha aberto
+        showSuccess(answers.nome, url);
     });
 })();

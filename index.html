@@ -62,7 +62,7 @@
         rel="stylesheet">
     <link rel="preload" as="image" href="assets/hero-clinica-vallenci.webp" media="(min-width: 761px)">
     <link rel="preload" as="image" href="assets/estrutura/recepcao-02.webp" media="(max-width: 760px)">
-    <link rel="stylesheet" href="styles.css?v=20260930-05">
+    <link rel="stylesheet" href="styles.css?v=20261001-01">
 </head>
 
 <body>
@@ -779,52 +779,64 @@
             <button class="lead-close" type="button" data-lead-close aria-label="Fechar formulário">
                 <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
             </button>
-            <p class="lead-eyebrow">Clínica VALLENCI</p>
-            <h2 id="leadTitle">Fale com a gente pelo <em>WhatsApp</em></h2>
-            <p class="lead-intro" id="leadIntro">Responda rapidinho para já chegarmos com as informações certas para você.</p>
-            <form class="lead-form" id="leadForm" novalidate>
-                <div class="lead-field">
-                    <label for="leadNome">Nome</label>
-                    <input id="leadNome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
-                    <p class="lead-error" id="leadNomeErro" hidden>Informe seu nome.</p>
-                </div>
-                <div class="lead-field">
-                    <label for="leadWhats">WhatsApp com DDD</label>
-                    <input id="leadWhats" name="whatsapp" type="tel" inputmode="numeric" placeholder="(79) 99999-9999" autocomplete="tel-national" maxlength="15" required>
-                    <p class="lead-error" id="leadWhatsErro" hidden>Informe um WhatsApp válido, com DDD.</p>
-                </div>
-                <div class="lead-field">
-                    <label for="leadArea">Qual é sua área de atuação?</label>
-                    <select id="leadArea" name="area" required>
-                        <option value="" selected disabled>Selecione uma opção</option>
-                        <option>Nutrição</option>
-                        <option>Medicina</option>
-                        <option>Fisioterapia</option>
-                        <option>Massoterapia</option>
-                        <option>Estética</option>
-                        <option>Psicologia</option>
-                        <option>Outra</option>
-                    </select>
-                    <p class="lead-error" id="leadAreaErro" hidden>Selecione sua área de atuação.</p>
-                </div>
-                <div class="lead-field">
-                    <label for="leadPacientes">Quantos pacientes você atende por mês?</label>
-                    <select id="leadPacientes" name="pacientes" required>
-                        <option value="" selected disabled>Selecione uma opção</option>
-                        <option>Ainda não tenho pacientes</option>
-                        <option>De 1 a 5 pacientes</option>
-                        <option>De 6 a 10 pacientes</option>
-                        <option>De 11 a 20 pacientes</option>
-                        <option>De 21 a 40 pacientes</option>
-                        <option>Mais de 40 pacientes</option>
-                    </select>
-                    <p class="lead-error" id="leadPacientesErro" hidden>Selecione uma opção.</p>
-                </div>
-                <button class="btn-wa lead-submit" type="submit">
-                    <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Continuar no WhatsApp</span>
-                </button>
-                <p class="lead-note">Você confirma o envio da mensagem no WhatsApp.</p>
-            </form>
+            <div class="lead-step" id="leadStep">
+                <p class="lead-eyebrow">Clínica VALLENCI</p>
+                <h2 id="leadTitle">Fale com a gente pelo <em>WhatsApp</em></h2>
+                <p class="lead-intro" id="leadIntro">Responda rapidinho para já chegarmos com as informações certas para você.</p>
+                <form class="lead-form" id="leadForm" novalidate>
+                    <div class="lead-field">
+                        <label for="leadNome">Nome</label>
+                        <input id="leadNome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
+                        <p class="lead-error" id="leadNomeErro" hidden>Informe seu nome.</p>
+                    </div>
+                    <div class="lead-field">
+                        <label for="leadWhats">WhatsApp com DDD</label>
+                        <input id="leadWhats" name="whatsapp" type="tel" inputmode="numeric" placeholder="(79) 99999-9999" autocomplete="tel-national" maxlength="15" required>
+                        <p class="lead-error" id="leadWhatsErro" hidden>Informe um WhatsApp válido, com DDD.</p>
+                    </div>
+                    <div class="lead-field">
+                        <label for="leadArea">Qual é sua área de atuação?</label>
+                        <select id="leadArea" name="area" required>
+                            <option value="" selected disabled>Selecione uma opção</option>
+                            <option>Nutrição</option>
+                            <option>Medicina</option>
+                            <option>Fisioterapia</option>
+                            <option>Massoterapia</option>
+                            <option>Estética</option>
+                            <option>Psicologia</option>
+                            <option>Outra</option>
+                        </select>
+                        <p class="lead-error" id="leadAreaErro" hidden>Selecione sua área de atuação.</p>
+                    </div>
+                    <div class="lead-field">
+                        <label for="leadPacientes">Quantos pacientes você atende por mês?</label>
+                        <select id="leadPacientes" name="pacientes" required>
+                            <option value="" selected disabled>Selecione uma opção</option>
+                            <option>Ainda não tenho pacientes</option>
+                            <option>De 1 a 5 pacientes</option>
+                            <option>De 6 a 10 pacientes</option>
+                            <option>De 11 a 20 pacientes</option>
+                            <option>De 21 a 40 pacientes</option>
+                            <option>Mais de 40 pacientes</option>
+                        </select>
+                        <p class="lead-error" id="leadPacientesErro" hidden>Selecione uma opção.</p>
+                    </div>
+                    <button class="btn-wa lead-submit" type="submit">
+                        <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Continuar no WhatsApp</span>
+                    </button>
+                    <p class="lead-note">Você confirma o envio da mensagem no WhatsApp.</p>
+                </form>
+            </div>
+            <!-- Confirmação: aparece no lugar do formulário depois do envio -->
+            <div class="lead-success" id="leadSuccess" hidden>
+                <span class="lead-success-icon" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+                <h2 id="leadSuccessTitle" tabindex="-1">Tudo certo<span id="leadSuccessNome"></span>!</h2>
+                <p class="lead-intro">Abrimos o WhatsApp da VALLENCI com a sua mensagem pronta. <strong>É só tocar em enviar por lá</strong> que a nossa equipe responde. Se ele não abriu, use o botão abaixo.</p>
+                <a class="btn-wa lead-submit" id="leadSuccessLink" href="#" target="_blank" rel="noopener">
+                    <svg class="icon icon-fill" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Abrir o WhatsApp de novo</span>
+                </a>
+                <button class="lead-back" type="button" data-lead-close>Voltar ao site</button>
+            </div>
         </div>
     </div>
 
@@ -856,7 +868,7 @@
 
     <script src="script.js?v=20260930-01" defer></script>
     <script src="eventos.js?v=20260930-01" defer></script>
-    <script src="lead-form.js?v=20260930-02" defer></script>
+    <script src="lead-form.js?v=20261001-01" defer></script>
     <script src="consent.js?v=20260930-01" defer></script>
 </body>
 
