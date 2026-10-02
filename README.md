@@ -66,6 +66,7 @@ Projeto **100% estático**, sem frameworks nem etapa de build, pronto para o **G
 ├── consent.js        # Aviso de cookies (LGPD) e Modo de Consentimento do Google
 ├── politica-de-privacidade.html  # Política de privacidade (rascunho para revisão)
 ├── 404.html          # Página para endereços que não existem (o GitHub Pages usa sozinho)
+├── sitemap.xml       # Mapa do site para o Google (o robots.txt fica em vallencisaude.github.io)
 ├── docs/             # Passo a passo do GTM para o gestor de tráfego
 └── assets/
     ├── hero-clinica-vallenci.webp
