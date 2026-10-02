@@ -92,11 +92,11 @@ A mensagem do WhatsApp é a padrão ("Olá! Sou profissional…") seguida das re
 
 ### Prévia ao compartilhar o link
 
-`assets/compartilhar-vallenci.jpg` (1200 × 630, JPG) aparece quando o link é enviado no WhatsApp, Instagram ou Facebook. As tags `og:url` e `og:image` precisam do endereço completo: **ao publicar no domínio oficial, troque `https://felipegaabrieldev.github.io/LP-Vallenci/` pelo novo endereço** nas duas (e nos dados da clínica, abaixo).
+`assets/compartilhar-vallenci.jpg` (1200 × 630, JPG) aparece quando o link é enviado no WhatsApp, Instagram ou Facebook. As tags `og:url` e `og:image` precisam do endereço completo (`https://vallencisaude.com.br/salas/`). Se o endereço do site mudar, troque nas duas, no `canonical` e nos dados da clínica, abaixo.
 
 ### Dados da clínica para o Google
 
-No `<head>` do `index.html` há um bloco `application/ld+json` (LocalBusiness) com nome, endereço, telefone, horário e Instagram, os mesmos do rodapé. Se algum dado mudar no rodapé, mude também ali. Ao publicar no domínio oficial, troque o endereço do GitHub nos campos `@id`, `url`, `image` e `logo` (`assets/marca/logo-512.png`). Para conferir: [Teste de pesquisa aprimorada do Google](https://search.google.com/test/rich-results).
+No `<head>` do `index.html` há um bloco `application/ld+json` (LocalBusiness) com nome, endereço, telefone, horário e Instagram, os mesmos do rodapé. Se algum dado mudar no rodapé, mude também ali. Os campos `@id`, `url`, `image` e `logo` (`assets/marca/logo-512.png`) usam o endereço completo do site. Para conferir: [Teste de pesquisa aprimorada do Google](https://search.google.com/test/rich-results).
 
 ### Rastreamento e cookies
 
@@ -150,11 +150,20 @@ Enquanto o vídeo não chega, o espaço mostra uma foto da recepção. Para ativ
 
 ---
 
+## Publicação
+
+- **Endereço oficial:** `https://vallencisaude.com.br/salas/`
+- **Onde fica:** organização [`vallencisaude`](https://github.com/vallencisaude) no GitHub, repositório `salas`, publicado pelo GitHub Pages.
+- **Domínio:** ligado ao site da organização (repositório `vallencisaude.github.io`). Por isso cada repositório da organização aparece numa "pasta" do domínio: `salas` → `/salas`, e futuros `exames`, `consultas` etc. Enquanto o site principal não existe, a raiz do domínio leva para `/salas/`.
+- **DNS** (Registro.br, zona do `vallencisaude.com.br`): 4 registros A para o GitHub Pages (`185.199.108.153` a `185.199.111.153`) e `www` como CNAME para `vallencisaude.github.io`.
+
+---
+
 ## Como rodar localmente
 
 ```bash
-git clone https://github.com/felipegaabrieldev/LP-Vallenci.git
-cd LP-Vallenci
+git clone https://github.com/vallencisaude/salas.git
+cd salas
 python3 -m http.server 8000
 ```
 

@@ -4,12 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <!-- O GitHub Pages mostra esta página em qualquer endereço que não existe, em qualquer
-         profundidade (ex.: /LP-Vallenci/salas/abc). A <base> faz os arquivos carregarem
-         da raiz do site, tanto no endereço de teste quanto no domínio oficial. -->
-    <script>
-        document.write('<base href="' + (/^\/LP-Vallenci(\/|$)/i.test(location.pathname) ? "/LP-Vallenci/" : "/") + '">');
-    </script>
+    <!-- O GitHub Pages mostra esta página em qualquer endereço que não existe dentro de /salas/,
+         em qualquer profundidade (ex.: /salas/precos/abc). A <base> faz os arquivos carregarem
+         de /salas/, tanto em vallencisaude.com.br quanto em vallencisaude.github.io. -->
+    <base href="/salas/">
     <title>Página não encontrada | Clínica VALLENCI</title>
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#2f3229">
